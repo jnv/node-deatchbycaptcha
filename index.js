@@ -12,6 +12,11 @@
     var DeathByCaptcha = function() {};
     DeathByCaptcha.prototype = {
 
+        // Set credentials for logging
+        setCredentials: function(credentials) {
+            instance.credentials = credentials;
+        },
+
         // Get the image data from an HTTP request
         decodeUrl: function(captchaURL, loopDelay, callback) {
             var url = URL.parse(captchaURL);
@@ -180,7 +185,7 @@
         instance = new DeathByCaptcha();
     }
     module.exports = {
-        credentials: {},
+        credentials: instance.setCredentials,
         decodeUrl: instance.decodeUrl,
         decodeFile: instance.decodeFile,
         report: instance.report,

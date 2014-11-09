@@ -14,10 +14,10 @@ Set up your credentials :
 
     var deathbycaptcha = require('deathbycaptcha3');
 
-    deathbycaptcha.credentials = {
+    deathbycaptcha.credentials({
         username: 'yourusername',
         password: 'xxxxxxxx'
-    };
+    });
 
 
 Decode from a url, with a 10 seconds polling interval :
