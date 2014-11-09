@@ -13,6 +13,7 @@ Post a captcha to the [deathbycaptcha](http://www.deathbycaptcha.com/) service, 
 
 Set up your credentials :
 
+
   var deathbycaptcha = require('deathbycaptcha3');
   
   deathbycaptcha.credentials = {
@@ -22,11 +23,13 @@ Set up your credentials :
 
 Decode from a url, with a 10 seconds polling interval :
 
+
   deathbycaptcha.decodeUrl(url, 10000, function(err, result) {
       console.log(result.text);
   });
 
 or decode from a file :
+
 
   deathbycaptcha.decodeFile('modern-captcha.jpg', 10000, function(err, result) {
       console.log(result.text, result.id);
@@ -34,11 +37,13 @@ or decode from a file :
 
 report invalid captcha :
 
+
   deathbycaptcha.report(function(err, result) {
       console.log(err);
   });  
 
 get your credit balance :
+
 
   deathbycaptcha.credit(function(err, result) {
       console.log(result.balance);
