@@ -5,7 +5,7 @@ Post a captcha to the [deathbycaptcha](http://www.deathbycaptcha.com/) service, 
 ## Installation
 
 
-    npm install deathbycaptcha2
+  npm install deathbycaptcha3
 
 
 ## Usage :
@@ -13,32 +13,34 @@ Post a captcha to the [deathbycaptcha](http://www.deathbycaptcha.com/) service, 
 
 Set up your credentials :
 
-    var deathbycaptcha = require('./index.js');
-    
-    deathbycaptcha.credentials = {
+  var deathbycaptcha = require('deathbycaptcha3');
+  
+  deathbycaptcha.credentials = {
       username: 'yourusername',
       password: 'xxxxxxxx'
-    };
-
-
+  };
 
 Decode from a url, with a 10 seconds polling interval :
 
-    deathbycaptcha.decodeUrl(url, 10000, function(err, result) {
+  deathbycaptcha.decodeUrl(url, 10000, function(err, result) {
       console.log(result.text);
-    });
-
+  });
 
 or decode from a file :
 
-    deathbycaptcha.decodeFile('modern-captcha.jpg', 10000, function(err, result) {
-       console.log(result.text);
-    });
+  deathbycaptcha.decodeFile('modern-captcha.jpg', 10000, function(err, result) {
+      console.log(result.text, result.id);
+  });
 
+report invalid captcha :
+
+  deathbycaptcha.report(function(err, result) {
+      console.log(err);
+  });  
 
 get your credit balance :
 
-    deathbycaptcha.credit( function(err, result) {
-       console.log(result.balance);
-    });
+  deathbycaptcha.credit(function(err, result) {
+      console.log(result.balance);
+  });
 
