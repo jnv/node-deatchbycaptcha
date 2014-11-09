@@ -36,7 +36,7 @@ or decode from a file :
 
 report invalid captcha :
 
-    deathbycaptcha.report(function(err, result) {
+    deathbycaptcha.report(captchaId, function(err, result) {
         console.log(err);
     });  
 
