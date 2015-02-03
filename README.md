@@ -4,13 +4,13 @@ Post a captcha to the [deathbycaptcha](http://www.deathbycaptcha.com/) service, 
 
 ## Installation
 
-    npm install deathbycaptcha3
+    npm install deathbycaptcha4
 
 
-## Usage :
+## Usage
 
 
-Set up your credentials :
+Set up your credentials:
 
     var deathbycaptcha = require('deathbycaptcha3');
 
@@ -20,29 +20,35 @@ Set up your credentials :
     });
 
 
-Decode from a url, with a 10 seconds polling interval :
+Decode from a url, with a 10 seconds polling interval:
 
     deathbycaptcha.decodeUrl(url, 10000, function(err, result) {
         console.log(result.text);
     });
 
 
-or decode from a file :
+or decode from a file:
 
     deathbycaptcha.decodeFile('modern-captcha.jpg', 10000, function(err, result) {
         console.log(result.text, result.id);
     });
 
 
-report invalid captcha :
+report invalid captcha:
 
     deathbycaptcha.report(captchaId, function(err, result) {
         console.log(err);
     });  
 
 
-get your credit balance :
+get your credit balance:
 
     deathbycaptcha.credit(function(err, result) {
         console.log(result.balance);
+    });
+
+get service status:
+
+    deathbycaptcha.status(function(err, result) {
+        console.log(result.todays_accuracy);
     });

@@ -1,12 +1,12 @@
 {
-    "name" : "deathbycaptcha3",
+    "name" : "deathbycaptcha4",
     "description": "deathbycaptcha API wrapper for Node.js",
     "tags": ["captcha", "deathbycaptcha"],
-    "author" : "Eric Abouaf <eric.abouaf@gmail.com>, Krzysztof Krztoń <krzysztof@krzton.com>",
-    "version": "1.1.1",
+    "author" : "Eric Abouaf <eric.abouaf@gmail.com>, Krzysztof Krztoń <krzysztof@krzton.com>, Thorben Fohlmeister <thorben@fohlmeister.com>",
+    "version": "1.2.0",
     "repository": { 
         "type" : "git",
-        "url" : "https://github.com/f1ames/node-deatchbycaptcha"
+        "url" : "https://github.com/designoid/node-deatchbycaptcha"
     },
     "main" : "./index.js",
     "dependencies": {

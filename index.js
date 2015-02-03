@@ -81,6 +81,24 @@
             });
         },
 
+        // Get system status (overload, accuracy, ...)
+        status: function(callback) {
+            request.get("http://api.dbcapi.me/api/status", function (error, response, body) {
+                if(error) {
+                    callback(error, null);                
+                }
+                else {
+                    var results = querystring.parse(body);
+                    if(results.error) {
+                        callback(results, null);                    
+                    }
+                    else {
+                        callback(error,results);        
+                    } 
+                }
+            });
+        },
+
         _upload: function(binaryContents, contentType, loopDelay, callback) {
             var boundary = Math.random();
 
@@ -189,6 +207,7 @@
         decodeUrl: instance.decodeUrl,
         decodeFile: instance.decodeFile,
         report: instance.report,
-        credit: instance.credit        
+        credit: instance.credit,
+        status: instance.status       
     };
 })(this);
