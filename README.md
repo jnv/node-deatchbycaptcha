@@ -12,7 +12,7 @@ Post a captcha to the [deathbycaptcha](http://www.deathbycaptcha.com/) service, 
 
 Set up your credentials:
 
-    var deathbycaptcha = require('deathbycaptcha3');
+    var deathbycaptcha = require('deathbycaptcha4');
 
     deathbycaptcha.credentials({
         username: 'yourusername',
