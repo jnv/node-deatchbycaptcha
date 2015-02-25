@@ -3,7 +3,7 @@
     "description": "deathbycaptcha API wrapper for Node.js",
     "tags": ["captcha", "deathbycaptcha"],
     "author" : "Eric Abouaf <eric.abouaf@gmail.com>, Krzysztof Krztoń <krzysztof@krzton.com>, Thorben Fohlmeister <thorben@fohlmeister.com>",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "repository": { 
         "type" : "git",
         "url" : "https://github.com/designoid/node-deatchbycaptcha"
