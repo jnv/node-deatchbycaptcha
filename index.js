@@ -22,7 +22,9 @@
         decodeUrl: function(captchaURL, loopDelay, callback) {
             var url = URL.parse(captchaURL);
             var protocol = http;
-            if(url.indexOf('https://') == 0) protocol = https;
+            if(captchaURL.indexOf('https://') == 0){
+                protocol = https;
+            }
             protocol.get({
                 host: url.host,
                 port: url.port,
