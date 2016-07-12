@@ -60,7 +60,7 @@
         // Pass the raw image data
         decodeData: function(data, contentType, loopDelay, callback) {
             instance._upload(data, contentType, loopDelay, callback);
-        }
+        },
 
         // Report invalid captcha
         report: function(captchaId, callback) {
