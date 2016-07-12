@@ -54,8 +54,13 @@
             });
             file_reader.on('end', function () {
                 instance._upload(file_contents, contentType, loopDelay, callback);
-            }); 
+            });
         },
+
+        // Pass the raw image data
+        decodeData: function(data, contentType, loopDelay, callback) {
+            instance._upload(data, contentType, loopDelay, callback);
+        }
 
         // Report invalid captcha
         report: function(captchaId, callback) {
@@ -111,7 +116,11 @@
             post_data.push(new Buffer(instance._encodeFieldPart(boundary, 'username', instance.credentials.username), 'ascii'));
             post_data.push(new Buffer(instance._encodeFieldPart(boundary, 'password', instance.credentials.password), 'ascii'));
             post_data.push(new Buffer(instance._encodeFilePart(boundary, contentType, 'captchafile', 'mycaptcha.'+mime.extension(contentType) ), 'binary'));
-            post_data.push(new Buffer(binaryContents, 'binary'));
+            if (Buffer.isBuffer(binaryContents)) {
+                post_data.push(binaryContents);
+            } else {
+                post_data.push(new Buffer(binaryContents, 'binary'));
+            }
             post_data.push(new Buffer("\r\n--" + boundary + "--"), 'ascii');
 
             var length = 0, i;
