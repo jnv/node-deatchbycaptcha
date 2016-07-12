@@ -25,7 +25,7 @@
             if(captchaURL.indexOf('https://') == 0) {
                 protocol = https;
             }
-            
+
             protocol.get({
                 host: url.host,
                 port: url.port,
@@ -77,16 +77,16 @@
                 form: instance.credentials
             }, function (error, response, body) {
                 if(error) {
-                    callback(error, null);                
+                    callback(error, null);
                 }
                 else {
                     var results = querystring.parse(body);
                     if(results.error) {
-                        callback(results, null);                    
+                        callback(results, null);
                     }
                     else {
-                        callback(error,results);        
-                    } 
+                        callback(error,results);
+                    }
                 }
             });
         },
@@ -95,16 +95,16 @@
         status: function(callback) {
             request.get("http://api.dbcapi.me/api/status", function (error, response, body) {
                 if(error) {
-                    callback(error, null);                
+                    callback(error, null);
                 }
                 else {
                     var results = querystring.parse(body);
                     if(results.error) {
-                        callback(results, null);                    
+                        callback(results, null);
                     }
                     else {
-                        callback(error,results);        
-                    } 
+                        callback(error,results);
+                    }
                 }
             });
         },
@@ -200,7 +200,7 @@
                 });
             }, loopDelay);
         },
-   
+
         _poll: function(captchaId, callback) {
             var url = "http://api.dbcapi.me/api/captcha/" + captchaId;
 
@@ -222,6 +222,6 @@
         decodeFile: instance.decodeFile,
         report: instance.report,
         credit: instance.credit,
-        status: instance.status       
+        status: instance.status
     };
 })(this);
