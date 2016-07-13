@@ -220,6 +220,7 @@
         credentials: instance.setCredentials,
         decodeUrl: instance.decodeUrl,
         decodeFile: instance.decodeFile,
+        decodeData: instance.decodeData,
         report: instance.report,
         credit: instance.credit,
         status: instance.status
