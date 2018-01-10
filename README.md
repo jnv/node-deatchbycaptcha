@@ -34,6 +34,13 @@ or decode from a file:
     });
 
 
+or decode from a token:
+
+    deathbycaptcha.decodeToken(googleKey, pageUrl, proxy, proxyType, 10000, function(err, result) {
+        console.log(result.text);
+    });
+
+
 report invalid captcha:
 
     deathbycaptcha.report(captchaId, function(err, result) {

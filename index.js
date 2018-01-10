@@ -18,6 +18,20 @@
             instance.credentials = credentials;
         },
 
+        // Get the token data from an HTTP request
+        decodeToken: function(googleKey, pageUrl, proxy, proxyType, loopDelay, callback) {
+            var boundary = Math.random();
+
+            var post_data = [];
+            post_data.push(instance._encodeFieldPart(boundary, 'username', instance.credentials.username));
+            post_data.push(instance._encodeFieldPart(boundary, 'password', instance.credentials.password));
+            post_data.push(instance._encodeFieldPart(boundary, 'type', '4'));
+            post_data.push(instance._encodeFieldPart(boundary, 'token_params', `{"googlekey":"${googleKey}","pageurl":"${pageUrl}","proxy": "${proxy}","proxytype": "${proxyType}"}`));
+            post_data.push("\r\n--" + boundary + "--");
+
+            instance._post(post_data, boundary, loopDelay, callback);
+        },
+
         // Get the image data from an HTTP request
         decodeUrl: function(captchaURL, loopDelay, callback) {
             var url = URL.parse(captchaURL);
@@ -94,6 +108,7 @@
         // Get system status (overload, accuracy, ...)
         status: function(callback) {
             request.get("http://api.dbcapi.me/api/status", function (error, response, body) {
+
                 if(error) {
                     callback(error, null);
                 }
@@ -108,7 +123,7 @@
                 }
             });
         },
-
+        
         _upload: function(binaryContents, contentType, loopDelay, callback) {
             var boundary = Math.random();
 
@@ -122,6 +137,10 @@
                 post_data.push(new Buffer(binaryContents, 'binary'));
             }
             post_data.push(new Buffer("\r\n--" + boundary + "--"), 'ascii');
+            instance._post(post_data, boundary, loopDelay, callback);
+        },
+
+        _post: function(post_data, boundary, loopDelay, callback) {
 
             var length = 0, i;
             for (i = 0; i < post_data.length; i++) {
@@ -219,6 +238,7 @@
     module.exports = {
         credentials: instance.setCredentials,
         decodeUrl: instance.decodeUrl,
+        decodeToken: instance.decodeToken,
         decodeFile: instance.decodeFile,
         decodeData: instance.decodeData,
         report: instance.report,
